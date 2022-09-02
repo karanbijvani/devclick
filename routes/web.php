@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\CompaniesController;
-use App\Http\Controllers\Admin\EmployeesController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\EmployeeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +25,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::controller(CompaniesController::class)->group(function () {
+    Route::controller(CompanyController::class)->group(function () {
         Route::get('companies', 'index')->name('companies');
         Route::get('companies/create', 'create')->name('company.create');
         Route::post('companies', 'store')->name('company.store');
@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('companies/{company}/delete', 'destroy')->name('company.destroy');
     });
 
-    Route::controller(EmployeesController::class)->group(function () {
+    Route::controller(EmployeeController::class)->group(function () {
         Route::get('/employees', 'index')->name('employees');
         Route::get('/employees/create', 'create')->name('employee.create');
         Route::post('employees', 'store')->name('employee.store');
